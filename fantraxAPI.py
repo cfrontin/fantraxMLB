@@ -12,6 +12,10 @@ def load_secrets():
     secrets = json.load(fsecrets)
   return secrets
 
+def dump_to_json(fn_json, data):
+  with open(fn_json, "w") as f_json:
+    json.dump(data, f_json, indent=4)
+
 def rest_request(
   url,
   body,

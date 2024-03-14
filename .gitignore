@@ -1,3 +1,10 @@
+### PROJECT SPECIFIC
+
+*.json
+fantrax.secrets
+
+### GITHUB PYTHON DEFAULT
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
