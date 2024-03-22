@@ -1,0 +1,28 @@
+2024 Mar 11
+Depth chart updates through Feb 10.
+
+2024 Feb 23
+Depth chart updates through Feb 22.
+
+2024 Feb 9
+Depth chart updates through Feb 8.
+
+2024 Feb 5
+Depth chart updates through Feb 4.
+Minor fixes to RDA and BRR projections.
+
+2023 Dec 29
+Fixed RA9/ERA calculation bugs that used incorrect league average and outs
+calculations.
+Depth chart updates through Dec 28.
+
+2023 Dec 22
+Projected SB for non-DC hitters.
+Depth chart updates through Dec 21.
+
+2023 Dec 21
+Fixed park-factors bug that gave four hitters zero hits.
+Depth chart updates through Dec 20.
+
+2023 Dec 18
+Initial release.

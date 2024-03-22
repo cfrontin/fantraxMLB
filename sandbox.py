@@ -1,8 +1,9 @@
-
 from pprint import pprint
 
 import pandas as pd
 
+from baseballprospectus import append_fantraxIDs, load_baseballprospectus_data
+from utils import *
 from fantraxAPI import *
 
 secrets = load_secrets()
@@ -24,9 +25,28 @@ for leagueData in leagueList["leagues"]:
     teamRosters = fetch_teamRosters(leagueId)
     leagueStandings = fetch_leagueStandings(leagueId)
 
-# # see https://stackoverflow.com/questions/13575090/construct-pandas-dataframe-from-items-in-nested-dictionary
-# # to do this better
-# playerIDs = pd.DataFrame(fetch_playerIDs())
-# print(playerIDs)
+# get the map of player IDs
+df_idmap = load_playerIDMap()
 
+# get BP/PECOTA predictions, map to points projections
+df_pecota_hitting, df_pecota_pitching = load_baseballprospectus_data(50)
+df_pecota_hitting = append_fantraxIDs(df_pecota_hitting, df_idmap)
+df_pecota_pitching = append_fantraxIDs(df_pecota_pitching, df_idmap)
 
+# df_pecota_hitting.join(df_datamap, on=["mlbid", ""])
+
+print()
+print(
+    df_pecota_hitting[["name", "bpid", "fantraxid", "warp"]].sort_values(
+        "warp", ascending=False
+    )
+)
+print()
+print(
+    df_pecota_pitching[["name", "bpid", "fantraxid", "warp"]].sort_values(
+        "warp", ascending=False
+    )
+)
+
+# get current stats from somewhere, map to points projections
+# ###
