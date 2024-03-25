@@ -79,6 +79,7 @@ def append_fantraxIDs(df_in, df_idmap):
             "FANTRAXID": "fantraxid",
         },
     )
+    df_idmap.fantraxid = [str(x) for x in df_idmap.fantraxid]
     df_in = df_in.merge(
         df_idmap,
         on="mlbid",
@@ -154,4 +155,5 @@ def merge_hittingpitching(df_pecota_hitting, df_pecota_pitching, has_fantrax=Tru
   df_pecota_all['warp'] = df_pecota_all['warp_hit'] + df_pecota_all['warp_pitch']
   if has_fantrax:
       df_pecota_all['fpts'] = df_pecota_all['fpts_hit'] + df_pecota_all['fpts_pitch']
+      df_pecota_all.fantraxid = df_pecota_all.fantraxid[1:-2]
   return df_pecota_all
