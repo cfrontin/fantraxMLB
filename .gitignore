@@ -3,6 +3,10 @@
 *.json
 fantrax.secrets
 
+### MACOS
+
+.DS_Store
+
 ### GITHUB PYTHON DEFAULT
 
 # Byte-compiled / optimized / DLL files

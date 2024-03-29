@@ -67,7 +67,7 @@ def fetch_leagueInfo(
     secrets=load_secrets(),
 ):
     if leagueId is None:
-        leagueId=secrets["league_id"]
+        leagueId = secrets["league_id"]
 
     url_leagueInfo = (
         f"https://www.fantrax.com/fxea/general/getLeagueInfo?leagueId={leagueId}"
@@ -87,7 +87,8 @@ def fetch_draftResults(
     leagueId=None,
     secrets=load_secrets(),
 ):
-    if leagueId is None: leagueId = secrets["league_id"]
+    if leagueId is None:
+        leagueId = secrets["league_id"]
 
     url_draftResults = (
         f"https://www.fantrax.com/fxea/general/getDraftResults?leagueId={leagueId}"
@@ -107,7 +108,8 @@ def fetch_teamRosters(
     leagueId=None,
     secrets=load_secrets(),
 ):
-    if leagueId is None: leagueId = secrets["league_id"]
+    if leagueId is None:
+        leagueId = secrets["league_id"]
 
     url_teamRosters = (
         f"https://www.fantrax.com/fxea/general/getTeamRosters?leagueId={leagueId}"
@@ -127,10 +129,11 @@ def fetch_leagueStandings(
     leagueId=None,
     secrets=load_secrets(),
 ):
-    if leagueId is None: leagueId = secrets["league_id"]
+    if leagueId is None:
+        leagueId = secrets["league_id"]
 
     url_leagueStandings = (
-        f"https://www.fantrax.com/fxea/general/getLeagueStandings?leagueId={leagueId}"
+        f"https://www.fantrax.com/fxea/general/getStandings?leagueId={leagueId}"
     )
     body_leagueStandings = {
         # "leagueId":secrets["league_id"],
