@@ -22,7 +22,13 @@ def load_baseballprospectus_data(percentile=50):
     df_pecota_hitting = pd.read_excel(
         fn_pecota_hitting,
         sheet_name=f"{percentile:d}",
+        # dtype={
+        #     "bpid": str,
+        #     "mlbid": str,
+        # }
     )
+    df_pecota_hitting["bpid"] = df_pecota_hitting.bpid.astype("str")
+    df_pecota_hitting["mlbid"] = df_pecota_hitting.mlbid.astype("str")
     df_pecota_hitting["percentile"] = 50.0
     print("done.")
     print("loading PECOTA pitching... ", end="", flush=True)
@@ -34,7 +40,13 @@ def load_baseballprospectus_data(percentile=50):
     df_pecota_pitching = pd.read_excel(
         fn_pecota_pitching,
         sheet_name=f"{percentile:d}",
+        # dtype={
+        #     "bpid": str,
+        #     "mlbid": str,
+        # }
     )
+    df_pecota_pitching["bpid"] = df_pecota_pitching.bpid.astype("str")
+    df_pecota_pitching["mlbid"] = df_pecota_pitching.mlbid.astype("str")
     df_pecota_pitching["pos"] = "P"
     df_pecota_pitching.loc[
         (df_pecota_pitching.gs > (df_pecota_pitching.sv + df_pecota_pitching.hld)),
@@ -84,7 +96,10 @@ def append_fantraxIDs(df_in, df_idmap):
             "FANTRAXID": "fantraxid",
         },
     )
-    df_idmap.fantraxid = [str(x) for x in df_idmap.fantraxid]
+    # df_idmap.fantraxid = [str(x) for x in df_idmap.fantraxid]
+    # df_idmap.mlbid = [str(x) for x in df_idmap.mlbid]
+    # df_idmap.bpid = [str(x) for x in df_idmap.bpid]
+    # df_idmap.fantraxid = [str(x).strip("*") for x in df_idmap.fantraxid]
     df_in = df_in.merge(
         df_idmap,
         on="mlbid",

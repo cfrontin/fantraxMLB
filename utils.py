@@ -51,7 +51,18 @@ def rest_request(
 
 def load_playerIDMap():
     fn_IDmap = os.path.join(_dir_pkg_root, "data", "PLAYERIDMAP.csv")
-    print("\nloading player ID map... ", end="", flush=True)
-    df_datamap = pd.read_csv(fn_IDmap)
+    print("loading player ID map... ", end="", flush=True)
+    df_datamap = pd.read_csv(
+        fn_IDmap,
+        dtype={
+            "FANTRAXID": str,
+            "MLBID": str,
+            "BPID": str,
+        }
+    )
+    df_datamap.FANTRAXID = [str(x).strip("*") for x in df_datamap.FANTRAXID]
+    # df_datamap["FANTRAXID"] = df_datamap.FANTRAXID.astype(str)
+    # df_datamap["MLBID"] = df_datamap.MLBID.astype(str)
+    # df_datamap["BPID"] = df_datamap.BPID.astype(str)
     print("done.")
     return df_datamap
